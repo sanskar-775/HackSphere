@@ -6,7 +6,7 @@
     --primary-color: #1dbf73; /* Vibrant Green */
     --secondary-color: #0e0e0e; /* Dark Background */
     --highlight-color: #1c86ee; /* Electric Blue */
-    --text-color: #e0e0e0; /* Light Grey */
+    --text-color: #090707; /* Light Grey */
     --glow-color: rgba(28, 134, 238, 0.3); /* Soft Glow Effect */
     --border-radius: 8px;
     --transition: all 0.3s ease-in-out;
@@ -26,6 +26,7 @@ body {
     padding: 1rem 2rem;
     background: rgba(0, 0, 0, 0.85); /* Darker for better contrast */
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
@@ -139,6 +140,7 @@ body {
     max-width: 1000px;
     margin: auto;
     padding: 2rem;
+    color: #fff !important;
 }
 
 .card {
