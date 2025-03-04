@@ -2,25 +2,64 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-
-.compareImg{
-    height: 300px;
+:root {
+    --primary-color: #00b894; /* Emerald Green – premium & modern */
+    --secondary-color: #121212; /* Deep Charcoal – better dark mode */
+    --hover-color: #008f72; /* Richer Green – smooth hover */
+    --highlight-color: #0984e3; /* Sky Blue – better contrast */
+    --text-color: #dfe6e9; /* Soft White – improved readability */
 }
 
-body{
-    color : "#252524" !important;
+
+body {
+    background: var(--secondary-color);
+    color: var(--text-color);
 }
 
+/* Button Styles */
 .btn-primary {
-    color : white !important;
+    background: var(--primary-color) !important;
+    color: white !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background: var(--hover-color) !important;
+    transform: scale(1.05);
+}
+
+.btn-outline {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
 }
 
 .btn-outline:hover {
-    background:  "#16564d"
-}
-.menu li > *:not(ul):not(.menu-title):not(details).active{
-    color : white !important;
-    background: #e8b333
+    background: var(--primary-color);
+    color: white;
 }
 
+/* Active Menu Item */
+.menu li > *:not(ul):not(.menu-title):not(details).active {
+    color: white !important;
+    background: var(--highlight-color);
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px rgba(28, 134, 238, 0.5);
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
 
+.menu li > *:not(ul):not(.menu-title):not(details).active:hover {
+    transform: scale(1.05);
+}
+
+/* Image Comparison Styling */
+.compareImg {
+    height: 300px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.compareImg:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.1);
+}

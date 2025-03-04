@@ -3,7 +3,7 @@ import { MODAL_BODY_TYPES } from '../utils/globalConstantUtil'
 import { useSelector, useDispatch } from 'react-redux'
 import { closeModal } from '@/store/modalSlice'
 import SignInModalBody from '@/components/common/SignInModalBody'
-import PricingModalBody from '@/components/common/PricingModalBody'
+import PricingModalBody from '@/components/common/PricingModalBody .js'
 
 
 
