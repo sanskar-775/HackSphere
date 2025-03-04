@@ -1,11 +1,19 @@
-# Hack Sphere 🚀
+# Hack Sphere 🌏
 
-## <h1>Under Construction , leaked pictures</h1>
+## <h3>Under Construction , leaked pictures</h3>
 
 > **"Revolutionizing the way we hack! Stay tuned for something amazing."**
 
 ### 🔥 What is Hack Sphere?
-Hack Sphere is an upcoming **cutting-edge hackathon platform** designed to bring together the brightest minds in tech. Stay tuned for updates as we build something incredible!
+**HackSphere** is a dynamic global platform that aggregates and showcases upcoming hackathons worldwide. It serves as a one-stop hub where developers, designers, and innovators can explore, register, and stay updated with hackathons happening across various platforms. 
+
+## 🚀 Features
+
+- 🌎 **Interactive 3D Earth Visualization** – Displays hackathon locations in a visually appealing way using Three.js & GSAP.
+- 📅 **Live Hackathon Listings** – Fetches and displays events from multiple sources (Unstop, Devpost, and more).
+- 🔍 **Event Details & Registration** – Users can explore detailed event pages and get redirected for registration.
+- 👤 **User & Admin Panel** – Secure login system for users and event organizers.
+- ✉️ **Email Notifications** – Alerts users about events they are interested in.
 
 ---
 
@@ -26,7 +34,15 @@ Hack Sphere is an upcoming **cutting-edge hackathon platform** designed to bring
 
 ---
 
-### 🌍 Stay Connected
+## 🏆 Acknowledgments
+- [Devpost API](https://devpost.com)
+- [Unstop API](https://unstop.com)
+- [Three.js](https://threejs.org)
+- [Next.js](https://nextjs.org)
+- [Tailwind CSS](https://tailwindcss.com)
+
+### 🎬 Stay Tuned!
+HackSphere is evolving! Follow us for updates and upcoming features. 
 
 🚀 **Let’s innovate together!**
 
