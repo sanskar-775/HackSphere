@@ -2,41 +2,41 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-const MyEvents = () => {
+const Registrations = () => {
   const { token } = useSelector((state) => state.user);
-  const [events, setEvents] = useState([]);
+  const [registrations, setRegistrations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (token) {
-      fetchEvents();
+      fetchRegistrations();
     }
   }, [token]);
 
-  const fetchEvents = async () => {
+  const fetchRegistrations = async () => {
     try {
       // Replace with actual API
       // const response = await axios.get("API_URL", { headers: { Authorization: `Bearer ${token}` } });
-      setEvents([
-        { name: "CodeStorm", date: "Jan 20, 2024", result: "Winner" },
-        { name: "WebHack", date: "Feb 5, 2024", result: "Finalist" },
+      setRegistrations([
+        { event: "AI Hackathon", status: "Pending", date: "March 15, 2024" },
+        { event: "CodeCamp", status: "Approved", date: "March 25, 2024" },
       ]);
     } catch (error) {
-      console.error("Error fetching events", error);
+      console.error("Error fetching registrations", error);
     }
     setIsLoading(false);
   };
 
   return (
     <div>
-      <h2 className="text-xl font-bold">My Events</h2>
+      <h2 className="text-xl font-bold">My Registrations</h2>
       {isLoading ? (
         <p className="text-center mt-4">Loading...</p>
       ) : (
         <ul className="mt-4">
-          {events.map((event, index) => (
+          {registrations.map((registration, index) => (
             <li key={index} className="p-2 border-b">
-              <strong>{event.name}</strong> - {event.date} ({event.result})
+              <strong>{registration.event}</strong> - {registration.date} ({registration.status})
             </li>
           ))}
         </ul>
@@ -45,4 +45,4 @@ const MyEvents = () => {
   );
 };
 
-export default MyEvents;
+export default Registrations;

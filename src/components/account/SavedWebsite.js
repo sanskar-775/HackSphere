@@ -1,47 +1,60 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import FeatureImageContainer from "../common/FeatureImageContainer"
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import PastHackathonCard from "./PastHackathonCard";
 
-
-const SavedImages = () => {
-
-  const {token} = useSelector(state => state.user)
-
-  const [isLoading, setIsLoading] = useState(false)
+const PastEvents = () => {
+    const { token } = useSelector((state) => state.user);
+    const [isLoading, setIsLoading] = useState(true);
+    const [pastEvents, setPastEvents] = useState([]);
 
     useEffect(() => {
-        if(token){
-            loadSavedImages()
+        if (token) {
+            loadPastEvents();
         }
-    }, [token])
+    }, [token]);
 
+    const loadPastEvents = async () => {
+        setIsLoading(true);
+        try {
+            const response = await axios.get(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/user/pastEvents`,
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+            setPastEvents(response.data.events || []);
+        } catch (error) {
+            console.error("Error fetching past events:", error);
+            setPastEvents([]);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
-    const [savedImages, setSavedImages] = useState([])
+    return (
+        <div className="max-w-5xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+            <h2 className="text-2xl font-bold text-center">🚀 Past Hackathons Participated</h2>
 
-    const loadSavedImages = async() => {
-        setIsLoading(true)
-        // const response = await axios.post(process.env.NEXT_PUBLIC_BASE_URL+'/savedWebsite')
-        setIsLoading(false)
-        setSavedImages([])
-    }
+            {/* Loading State */}
+            {isLoading && (
+                <div className="mt-12 text-center">
+                    <span className="loading"></span>
+                </div>
+            )}
 
-    return(
-       <>
-            <h2 className="text-xl font-bold text-center">Saved Websites</h2>
-            {isLoading && <div className="mt-12 text-center"><span className="loading"></span></div>}
+            {/* Display Past Events */}
+            {!isLoading && pastEvents.length > 0 ? (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-6 mt-6">
+                    {pastEvents.map((event, index) => (
+                        <PastHackathonCard key={index} event={event} />
+                    ))}
+                </div>
+            ) : (
+                !isLoading && (
+                    <p className="text-center text-gray-500 mt-6">No past hackathons found.</p>
+                )
+            )}
+        </div>
+    );
+};
 
-            <div className="grid md:grid-cols-3 grid-cols-1 md:gap-6 gap-2">
-                {
-                    savedImages.map((s, k) => {
-                        return <div className="mt-4 relative" key={k}><FeatureImageContainer {...s}  /></div>
-                        
-                    })
-                }
-            </div>
-
-       </>
-    )
-}
-
-export default SavedImages
+export default PastEvents;

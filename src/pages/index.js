@@ -1,36 +1,50 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
-import Hero from '@/components/home/Hero'
-import Features from '@/components/home/Features'
-import Testimonials from '@/components/home/Testimonials'
-import GenerationStep from '@/components/home/GenerationStep'
-import FeatureSection from '@/components/home/FeatureSection'
-import PageMetaTags from '@/containers/PageMetaTags'
-import Pricing from '@/components/home/Pricing'
-import CTA2 from '@/components/home/CTA2'
+import Image from 'next/image';
+import { Inter } from '@next/font/google';
+import Hero from '@/components/home/Hero';
+import Features from '@/components/home/Features';
+import Testimonials from '@/components/home/Testimonials';
+import GenerationStep from '@/components/home/GenerationStep';
+import FeatureSection from '@/components/home/FeatureSection';
+import PageMetaTags from '@/containers/PageMetaTags';
+import CTA2 from '@/components/home/CTA2';
+import PastEvents from '@/components/account/PastEvents';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   return (
     <>
-      <PageMetaTags title="Home" description={""} url=""/>
-    <div itemScope itemType="https://schema.org/WebSite">
-      <meta itemProp="url" content="https://www.webdesignai.com/"/>
-      <meta itemProp="name" content="Web Design AI"/>
-    </div>
-        <Hero />
-        <GenerationStep />
-        <FeatureSection showHeading={true} title="Feature title 1"/>
+      {/* Updated Meta Tags for HackSphere */}
+      <PageMetaTags title="HackSphere | Home" description="Join the ultimate hackathon experience. Innovate, collaborate, and compete!" url=""/>
+      
+      {/* Schema for HackSphere */}
+      <div itemScope itemType="https://schema.org/WebSite">
+        <meta itemProp="url" content="https://www.hacksphere.com/" />
+        <meta itemProp="name" content="HackSphere" />
+      </div>
 
-        <FeatureSection title="Featuer title 2" leftText="1" />
+      {/* Hero Section */}
+      <Hero />
 
-        <FeatureSection title="Feature title 3"/>
+      {/* Hackathon Process Steps */}
+      <GenerationStep />
 
-        <Testimonials />
-        <Pricing />
-        <CTA2 />
+      {/* Key Features of HackSphere */}
+      <FeatureSection showHeading={true} title="Why Join HackSphere?" />
+      <FeatureSection title="Innovative Challenges" leftText="1" />
+      <FeatureSection title="Mentorship & Networking" />
+
+      {/* Past Hackathon Events */}
+      <PastEvents />
+
+      {/* Testimonials from Participants */}
+      <Testimonials />
+
+      {/* Registration Details (Replaced Pricing) */}
+      <FeatureSection title="Register Now for HackSphere 2025!" />
+
+      {/* Call to Action */}
+      <CTA2 />
     </>
-  )
+  );
 }
