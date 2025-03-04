@@ -3,11 +3,11 @@
 @import 'tailwindcss/utilities';
 
 :root {
-    --primary-color: #00b894; /* Emerald Green – premium & modern */
-    --secondary-color: #121212; /* Deep Charcoal – better dark mode */
-    --hover-color: #008f72; /* Richer Green – smooth hover */
-    --highlight-color: #0984e3; /* Sky Blue – better contrast */
-    --text-color: #dfe6e9; /* Soft White – improved readability */
+    --primary-color: #3498db; /* Bright Blue – clean and modern */
+    --secondary-color: #f8f9fa; /* Soft White – subtle background */
+    --hover-color: #2980b9; /* Slightly darker blue – smooth hover */
+    --highlight-color: #e67e22; /* Warm Orange – vibrant contrast */
+    --text-color: #2c3e50; /* Deep Blue-Gray – high readability */
 }
 
 
