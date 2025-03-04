@@ -3,11 +3,11 @@
 @import 'tailwindcss/utilities';
 
 :root {
-    --primary-color: #00b894; /* Emerald Green – premium & modern */
-    --secondary-color: #121212; /* Deep Charcoal – better dark mode */
-    --hover-color: #008f72; /* Richer Green – smooth hover */
-    --highlight-color: #0984e3; /* Sky Blue – better contrast */
-    --text-color: #dfe6e9; /* Soft White – improved readability */
+    --primary-color: #3498db; /* Bright Blue – clean and modern */
+    --secondary-color: #f8f9fa; /* Soft White – subtle background */
+    --hover-color: #2980b9; /* Slightly darker blue – smooth hover */
+    --highlight-color: #e67e22; /* Warm Orange – vibrant contrast */
+    --text-color: #2c3e50; /* Deep Blue-Gray – high readability */
 }
 
 
@@ -16,27 +16,36 @@ body {
     color: var(--text-color);
 }
 
-/* Button Styles */
+/* Buttons */
 .btn-primary {
     background: var(--primary-color) !important;
     color: white !important;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
     transition: all 0.3s ease-in-out;
 }
 
 .btn-primary:hover {
     background: var(--hover-color) !important;
-    transform: scale(1.05);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 191, 148, 0.3);
 }
 
 .btn-outline {
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
     transition: all 0.3s ease-in-out;
 }
 
 .btn-outline:hover {
     background: var(--primary-color);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 12px rgba(0, 191, 148, 0.3);
 }
 
 /* Active Menu Item */
@@ -44,7 +53,7 @@ body {
     color: white !important;
     background: var(--highlight-color);
     border-radius: 6px;
-    box-shadow: 0px 0px 10px rgba(28, 134, 238, 0.5);
+    box-shadow: 0px 0px 12px rgba(9, 132, 227, 0.5);
     transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
@@ -61,5 +70,24 @@ body {
 
 .compareImg:hover {
     transform: scale(1.03);
+    box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.15);
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Global Card Styling */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    background: rgba(255, 255, 255, 0.08);
     box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.1);
+    transform: scale(1.02);
 }

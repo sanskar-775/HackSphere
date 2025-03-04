@@ -1,92 +1,295 @@
-
-  import { useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import InnerPageContainer from "@/components/common/InnerPageContainer";
 import PageMetaTags from "@/containers/PageMetaTags";
 
 export default function HostPage() {
+  const router = useRouter();
   const [eventDetails, setEventDetails] = useState({
-    eventName: "",
-    duration: "",
-    prizeMoney: "",
-    description: "",
+    opportunityLogo: null,
+    opportunityType: "hackathon",
+    opportunitySubType: "",
+    visibility: "public",
+    opportunityTitle: "",
+    organization: "",
+    websiteUrl: "",
+    festival: "",
+    modeOfEvent: "online",
+    categories: [],
   });
+  const [isSubmitted, setIsSubmitted] = useState(false); // Track submission status
+  const [isSuccess, setIsSuccess] = useState(false); // Track success/failure
+  const [errorMessage, setErrorMessage] = useState(""); // Store error message
 
   const handleChange = (e) => {
-    setEventDetails({ ...eventDetails, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setEventDetails({ ...eventDetails, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setEventDetails({ ...eventDetails, opportunityLogo: file });
+  };
+
+  const handleCategoryChange = (e) => {
+    const { value, checked } = e.target;
+    let updatedCategories = [...eventDetails.categories];
+    if (checked) {
+      updatedCategories.push(value);
+    } else {
+      updatedCategories = updatedCategories.filter((cat) => cat !== value);
+    }
+    setEventDetails({ ...eventDetails, categories: updatedCategories });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Event Submitted:", eventDetails);
-    // Integrate API Call to Save Event Data
+    setIsSubmitted(true); // Mark form as submitted
+
+    try {
+      // Simulate API call (replace with actual API call)
+      const response = await fetch("/api/host-event", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(eventDetails),
+      });
+
+      if (response.ok) {
+        setIsSuccess(true); // Mark as successful
+        setErrorMessage(""); // Clear any previous error message
+        console.log("Event submitted successfully!");
+
+        // Optionally, reset the form
+        setEventDetails({
+          opportunityLogo: null,
+          opportunityType: "hackathon",
+          opportunitySubType: "",
+          visibility: "public",
+          opportunityTitle: "",
+          organization: "",
+          websiteUrl: "",
+          festival: "",
+          modeOfEvent: "online",
+          categories: [],
+        });
+
+        // Redirect to another page after success (optional)
+        router.push("/success-page"); // Replace with your desired route
+      } else {
+        setIsSuccess(false); // Mark as failed
+        setErrorMessage("Failed to submit event. Please try again."); // Set error message
+        console.error("Failed to submit event.");
+      }
+    } catch (error) {
+      setIsSuccess(false); // Mark as failed
+      setErrorMessage("An error occurred. Please try again."); // Set error message
+      console.error("Error:", error);
+    }
   };
 
   return (
-    <InnerPageContainer title="Host Your Hackathon">
+    <InnerPageContainer title="Host Your Event">
       <PageMetaTags 
-        title="Host Your Hackathon" 
-        description="Submit details of your hackathon event including duration, prize money, and description." 
+        title="Host Your Event" 
+        description="Submit details of your event including opportunity type, visibility, and categories." 
         url="/host-event"
       />
       
       <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-4">Enter Hackathon Details</h2>
+        <h2 className="text-2xl font-bold mb-4">Host Your Event</h2>
 
+        {/* Success Message */}
+        {isSubmitted && isSuccess && (
+          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+            Event submitted successfully!
+          </div>
+        )}
+
+        {/* Error Message */}
+        {isSubmitted && !isSuccess && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            {errorMessage || "Failed to submit event. Please try again."}
+          </div>
+        )}
+
+        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Event Name */}
+          {/* Opportunity Logo */}
           <div>
-            <label className="block font-semibold">Event Name</label>
+            <label className="block font-semibold">Opportunity Logo *</label>
             <input 
-              type="text" 
-              name="eventName"
-              value={eventDetails.eventName}
-              onChange={handleChange}
+              type="file"
+              name="opportunityLogo"
+              onChange={handleFileChange}
               className="w-full p-2 border rounded-lg"
-              placeholder="Enter event name"
+              accept="image/*"
               required
             />
           </div>
 
-          {/* Duration */}
+          {/* Opportunity Type */}
           <div>
-            <label className="block font-semibold">Duration (in days)</label>
-            <input 
-              type="number"
-              name="duration"
-              value={eventDetails.duration}
+            <label className="block font-semibold">Opportunity Type *</label>
+            <select
+              name="opportunityType"
+              value={eventDetails.opportunityType}
               onChange={handleChange}
               className="w-full p-2 border rounded-lg"
-              placeholder="Enter duration"
+              required
+            >
+              <option value="hackathon">Hackathon</option>
+              <option value="workshop">Workshop</option>
+              <option value="competition">Competition</option>
+              <option value="webinar">Webinar</option>
+            </select>
+          </div>
+
+          {/* Opportunity Sub Type */}
+          <div>
+            <label className="block font-semibold">Opportunity Sub Type *</label>
+            <input 
+              type="text"
+              name="opportunitySubType"
+              value={eventDetails.opportunitySubType}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-lg"
+              placeholder="Enter sub type"
               required
             />
           </div>
 
-          {/* Prize Money */}
+          {/* Visibility Options */}
           <div>
-            <label className="block font-semibold">Prize Money (in USD)</label>
+            <label className="block font-semibold">Visibility *</label>
+            <div className="space-y-2">
+              <label className="flex items-center">
+                <input 
+                  type="radio"
+                  name="visibility"
+                  value="public"
+                  checked={eventDetails.visibility === "public"}
+                  onChange={handleChange}
+                  className="mr-2"
+                />
+                Open publicly on Unstop (Will be visible to all Unstop users)
+              </label>
+              <label className="flex items-center">
+                <input 
+                  type="radio"
+                  name="visibility"
+                  value="invite-only"
+                  checked={eventDetails.visibility === "invite-only"}
+                  onChange={handleChange}
+                  className="mr-2"
+                />
+                Invite Only
+              </label>
+            </div>
+          </div>
+
+          {/* Opportunity Title */}
+          <div>
+            <label className="block font-semibold">Enter Opportunity Title *</label>
             <input 
-              type="number"
-              name="prizeMoney"
-              value={eventDetails.prizeMoney}
+              type="text"
+              name="opportunityTitle"
+              value={eventDetails.opportunityTitle}
               onChange={handleChange}
               className="w-full p-2 border rounded-lg"
-              placeholder="Enter prize money"
+              placeholder="Enter opportunity title"
               required
             />
           </div>
 
-          {/* Description */}
+          {/* Organization */}
           <div>
-            <label className="block font-semibold">Description</label>
-            <textarea 
-              name="description"
-              value={eventDetails.description}
+            <label className="block font-semibold">Enter Your Organisation *</label>
+            <input 
+              type="text"
+              name="organization"
+              value={eventDetails.organization}
               onChange={handleChange}
               className="w-full p-2 border rounded-lg"
-              rows="4"
-              placeholder="Enter event description"
+              placeholder="Enter organization name"
               required
             />
+          </div>
+
+          {/* Website URL */}
+          <div>
+            <label className="block font-semibold">Website URL</label>
+            <input 
+              type="url"
+              name="websiteUrl"
+              value={eventDetails.websiteUrl}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-lg"
+              placeholder="https://"
+            />
+          </div>
+
+          {/* Festival (Optional) */}
+          <div>
+            <label className="block font-semibold">Festival (optional)</label>
+            <input 
+              type="text"
+              name="festival"
+              value={eventDetails.festival}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-lg"
+              placeholder="Enter festival name"
+            />
+          </div>
+
+          {/* Mode of Event */}
+          <div>
+            <label className="block font-semibold">Mode of Event *</label>
+            <div className="space-y-2">
+              <label className="flex items-center">
+                <input 
+                  type="radio"
+                  name="modeOfEvent"
+                  value="online"
+                  checked={eventDetails.modeOfEvent === "online"}
+                  onChange={handleChange}
+                  className="mr-2"
+                />
+                Online Mode
+              </label>
+              <label className="flex items-center">
+                <input 
+                  type="radio"
+                  name="modeOfEvent"
+                  value="offline"
+                  checked={eventDetails.modeOfEvent === "offline"}
+                  onChange={handleChange}
+                  className="mr-2"
+                />
+                Offline Mode
+              </label>
+            </div>
+          </div>
+
+          {/* Categories */}
+          <div>
+            <label className="block font-semibold">Categories *</label>
+            <div className="space-y-2">
+              {["Tech", "Coding", "Innovation", "Design", "Business"].map((category) => (
+                <label key={category} className="flex items-center">
+                  <input 
+                    type="checkbox"
+                    name="categories"
+                    value={category}
+                    checked={eventDetails.categories.includes(category)}
+                    onChange={handleCategoryChange}
+                    className="mr-2"
+                  />
+                  {category}
+                </label>
+              ))}
+            </div>
           </div>
 
           {/* Submit Button */}
@@ -94,7 +297,7 @@ export default function HostPage() {
             type="submit" 
             className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700"
           >
-            Submit Event
+            Next
           </button>
         </form>
       </div>
