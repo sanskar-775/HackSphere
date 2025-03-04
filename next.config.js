@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  transpilePackages: ['react-hotjar'],
+  transpilePackages: ["react-hotjar"],
 
   webpack: (config) => {
     config.module.rules.push({
@@ -10,7 +10,15 @@ const nextConfig = {
     });
     return config;
   },
+
+  async rewrites() {
+    return [
+      {
+        source: "/api/hackathons",
+        destination: "https://hackathons.hackclub.com/api/events/upcoming",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
-
