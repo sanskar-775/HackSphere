@@ -37,6 +37,7 @@
     "eslint-config-next": "13.1.6",
     "glslify": "^7.1.1",
     "gsap": "^3.12.7",
+    "lucide-react": "^0.477.0",
     "mixpanel-browser": "^2.48.1",
     "next": "^14.0.3",
     "nextjs-google-analytics": "^2.3.3",
