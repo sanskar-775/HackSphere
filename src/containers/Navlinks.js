@@ -5,7 +5,7 @@ function Navlinks(){
     return(
         <>
             {/* <li className="mr-2"><Link href="/features">Features</Link></li> */}
-            <li className="mr-2"><Link href="/pricing">Host</Link></li>
+            <li className="mr-2"><Link href="/Host">Host</Link></li>
             {/* <li className="mr-2"><Link href="/blogs">Blogs</Link></li> */}
             <li className="mr-2"><Link href="/Aboutus">About Us</Link></li>
             <li className="mr-2"><Link href="/Events">Events</Link></li>
