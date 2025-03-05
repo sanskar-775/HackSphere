@@ -1,7 +1,8 @@
 import React from "react";
-import styles from "../styles/HackathonCard.module.css"; // Import CSS Module
+import styles from "../styles/HackathonCard.module.css"; // ✅ Reuse CSS Module
 
-const HackathonCard = ({ hackathon }) => {
+const HackathonCardUnstop = ({ hackathon }) => {
+    console.log(hackathon);
   return (
     <div className={styles.card}>
       <img src={hackathon.banner} alt={hackathon.name} className={styles.cardImg} />
@@ -18,4 +19,4 @@ const HackathonCard = ({ hackathon }) => {
   );
 };
 
-export default HackathonCard;
+export default HackathonCardUnstop;
