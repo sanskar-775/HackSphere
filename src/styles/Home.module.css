@@ -1,3 +1,103 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+    --primary-color: #1dbf73; /* Vibrant Green */
+    --secondary-color: #0e0e0e; /* Dark Background */
+    --highlight-color: #1c86ee; /* Electric Blue */
+    --text-color: #090707; /* Light Grey */
+    --glow-color: rgba(28, 134, 238, 0.3); /* Soft Glow Effect */
+    --border-radius: 8px;
+    --transition: all 0.3s ease-in-out;
+}
+
+body {
+    background: var(--secondary-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+}
+
+/* 🔹 Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.85); /* Darker for better contrast */
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.navbar-logo:hover {
+    color: var(--highlight-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.nav-links li a {
+    font-size: 1rem;
+    color: #f0f0f0;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.nav-links li a:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.subscribe-btn {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.subscribe-btn:hover {
+    background: var(--highlight-color);
+    transform: scale(1.05);
+}
+
+.user-icon {
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.user-icon:hover {
+    color: var(--highlight-color);
+}
+
+/* 🔹 Main Layout */
 .main {
   display: flex;
   flex-direction: column;
@@ -40,10 +140,13 @@
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
-  width: var(--max-width);
-  max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: auto;
+    padding: 2rem;
+    color: #fff !important;
 }
 
 .card {

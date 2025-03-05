@@ -44,10 +44,10 @@ export default function HostPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true); // Mark form as submitted
-
+    setIsSubmitted(true);
+  
     try {
-      // Simulate API call (replace with actual API call)
+      console.log("Submitting data:", eventDetails); // **NEW LINE 1: Log data being sent**
       const response = await fetch("/api/host-event", {
         method: "POST",
         headers: {
@@ -55,36 +55,23 @@ export default function HostPage() {
         },
         body: JSON.stringify(eventDetails),
       });
-
+  
+      console.log("Response Status:", response.status); // **NEW LINE 2: Log server's status code**
+      console.log("Response OK:", response.ok);     // **NEW LINE 3: Log if the status code is "OK" (200 range)**
+  
       if (response.ok) {
-        setIsSuccess(true); // Mark as successful
-        setErrorMessage(""); // Clear any previous error message
+        setIsSuccess(true);
+        setErrorMessage("");
         console.log("Event submitted successfully!");
-
-        // Optionally, reset the form
-        setEventDetails({
-          opportunityLogo: null,
-          opportunityType: "hackathon",
-          opportunitySubType: "",
-          visibility: "public",
-          opportunityTitle: "",
-          organization: "",
-          websiteUrl: "",
-          festival: "",
-          modeOfEvent: "online",
-          categories: [],
-        });
-
-        // Redirect to another page after success (optional)
-        router.push("/success-page"); // Replace with your desired route
+        // router.push("/success-page"); // Keep redirection commented out for now
       } else {
-        setIsSuccess(false); // Mark as failed
-        setErrorMessage("Failed to submit event. Please try again."); // Set error message
+        setIsSuccess(false);
+        setErrorMessage("Failed to submit event. Please try again.");
         console.error("Failed to submit event.");
       }
     } catch (error) {
-      setIsSuccess(false); // Mark as failed
-      setErrorMessage("An error occurred. Please try again."); // Set error message
+      setIsSuccess(false);
+      setErrorMessage("An error occurred. Please try again.");
       console.error("Error:", error);
     }
   };
