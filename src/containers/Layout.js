@@ -3,11 +3,9 @@ import Navbar from "./Navbar";
 import Link from "next/link";
 import Navlinks from "./Navlinks";
 import Head from "next/head";
-import ModalLayout from "./ModalLayout";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoggedIn, setToken } from "@/store/userSlice";
 import { useEffect, useCallback } from "react";
-import LeftSidebar from "./LeftSidebar";
 import NavProfileLinks from "./NavProfileLinks";
 
 export default function Layout({ children }) {
@@ -59,9 +57,6 @@ export default function Layout({ children }) {
           </ul>
         </div>
       </div>
-
-      <LeftSidebar />
-      <ModalLayout />
     </>
   );
 }

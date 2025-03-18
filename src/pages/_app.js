@@ -1,7 +1,6 @@
 import Layout from '@/containers/Layout'
 import '@/styles/globals.css'
 import { useEffect } from 'react'
-import { themeChange } from 'theme-change'
 import { Provider } from 'react-redux'
 import store from '../store'
 import { hotjar } from 'react-hotjar'

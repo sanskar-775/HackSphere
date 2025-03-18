@@ -1,8 +1,13 @@
 import Head from 'next/head';
 
-function PageMetaTags({ title, description = "Explore AI-powered web design solutions.", url = "", siteName = "Web Design AI" }) {
+function PageMetaTags({ 
+  title, 
+  description = "Discover global hackathons and events on HackSphere.", 
+  url = "", 
+  siteName = "HackSphere" 
+}) {
   const pageTitle = title ? `${title} | ${siteName}` : siteName;
-  const fullUrl = `https://www.webdesignai.com${url}`;
+  const fullUrl = `https://www.hacksphere.com${url}`;
 
   return (
     <Head>
