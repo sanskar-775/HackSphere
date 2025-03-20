@@ -27,8 +27,10 @@ const Hackathons = () => {
     }, []);
 
     return (
-        <div className="container">
-            <h1 className="text-4xl font-bold text-center">Upcoming Hackathons</h1>
+        <div>
+        <h1 className="text-4xl font-bold text-center">Upcoming Hackathons</h1>
+        <div className="w-full flex flex-col items-center">
+            
             {loading ? (
                 <p>Loading hackathons...</p>
             ) : (
@@ -42,6 +44,7 @@ const Hackathons = () => {
                     )}
                 </div>
             )}
+        </div>
         </div>
     );
 };

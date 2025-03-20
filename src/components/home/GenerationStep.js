@@ -12,7 +12,8 @@ const hackathonFlow = [
 
 function HackathonFlow() {
     return (
-        <div className="grid place-items-center bg-slate-50 w-full">
+        
+        <div className="grid place-items-center w-full" data-theme="night">
             <div className="max-w-6xl w-full py-24 px-4 content-center justify-center">
                 <h2 className="text-3xl text-center font-bold">Hackathon Event Flow</h2>
                 <div className="grid mt-24 md:grid-cols-4 grid-cols-1 gap-8">
