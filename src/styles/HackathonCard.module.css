@@ -1,17 +1,38 @@
-/* src/styles/HackathonCard.module.css */
 .card {
   width: 300px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Semi-transparent border */
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  backdrop-filter: blur(5px); /* Glass blur effect */
+  -webkit-backdrop-filter: blur(5px); /* For Safari support */
+  position: relative; /* Ensures proper stacking context */
+  text-align: center;
 }
 
 .card:hover {
   transform: scale(1.05);
 }
 
+/* Optional: Add subtle gradient to enhance glass effect */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.15)
+  );
+  z-index: -1;
+}
+
+/* Rest of your existing styles remain the same */
 .card-img {
   width: 100%;
   height: 150px;
@@ -22,17 +43,18 @@
   padding: 15px;
 }
 
-.card-button {
+/* .card-button {
   display: block;
   margin-top: 10px;
   padding: 10px;
   text-align: center;
-  background-color: #007bff;
+  background-color: rgba(0, 123, 255, 0.8);
   color: white;
   text-decoration: none;
   border-radius: 5px;
-}
+  transition: background-color 0.2s;
+} */
 
 .card-button:hover {
-  background-color: #0056b3;
+  background-color: rgba(0, 86, 179, 0.9); /* Darker transparent hover */
 }

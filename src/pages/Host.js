@@ -1,3 +1,4 @@
+'use-client'
 import { useState } from "react";
 import { useRouter } from "next/router";
 import InnerPageContainer from "@/components/common/InnerPageContainer";
@@ -84,8 +85,7 @@ export default function HostPage() {
         url="/host-event"
       />
       
-      <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-4">Host Your Event</h2>
+      <div className="max-w-3xl mx-auto p-6 rounded-lg shadow-md">
 
         {/* Success Message */}
         {isSubmitted && isSuccess && (
@@ -282,7 +282,7 @@ export default function HostPage() {
           {/* Submit Button */}
           <button 
             type="submit" 
-            className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700"
+            className="w-full btn btn-circle"
           >
             Next
           </button>

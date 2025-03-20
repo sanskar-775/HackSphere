@@ -62,9 +62,9 @@ function Navbar(){
                 <Bars3Icon className="h-5 inline-block w-5"/>
             </label>
         </div> 
-        <div className="md:flex-1 flex-none px-2 mx-2">
+        <div className="md:flex-1 flex-none px-2 mx-2 ">
             <Link href="/">
-            <span className='font-bold text-xl'>
+            <span className='font-bold text-3xl wave-text'>
                 <h2>HackSphere</h2>
             </span>
             </Link>
