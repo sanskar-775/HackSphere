@@ -26,6 +26,7 @@ export default function Layout({ children }) {
 
   return (
     <>
+    <div data-theme="night">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:image" content="/cover-pic.png" />
@@ -56,6 +57,7 @@ export default function Layout({ children }) {
             <NavProfileLinks />
           </ul>
         </div>
+      </div>
       </div>
     </>
   );
