@@ -2,6 +2,18 @@
 const nextConfig = {
   reactStrictMode: false,
   transpilePackages: ["react-hotjar"],
+  
+  // Add image configuration here
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
 
   webpack: (config) => {
     config.module.rules.push({
@@ -10,7 +22,7 @@ const nextConfig = {
     });
     return config;
   },
-
+  
   async rewrites() {
     return [
       {
@@ -26,4 +38,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-

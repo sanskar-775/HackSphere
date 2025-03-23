@@ -42,7 +42,7 @@ export default NextAuth({
 
       return true;
     },
-    async session({ session }) {
+    async session({ session , token  }) {
       await dbConnect();
 
       const dbUser = await User.findOne({ email: session.user.email });
@@ -50,7 +50,8 @@ export default NextAuth({
         session.user.id = dbUser._id.toString();
       }
       
-      return session;
+      session.user.image = token.picture;
+    return session;
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
