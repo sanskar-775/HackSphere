@@ -8,7 +8,9 @@ import { GoogleAnalytics } from 'nextjs-google-analytics';
 import mixpanel from 'mixpanel-browser';
 import { Crisp } from 'crisp-sdk-web';
 import TagManager from 'react-gtm-module';
-import { SessionProvider } from 'next-auth/react'; // Import SessionProvider
+import { SessionProvider } from 'next-auth/react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App({ Component, pageProps: { session, ...pageProps } }) {
   useEffect(() => {
@@ -24,10 +26,26 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
   }, []);
 
   return (
-    <SessionProvider session={session}> {/* Wrap with SessionProvider */}
+    <SessionProvider session={session}>
       <Provider store={store}>
         <Layout>
           <GoogleAnalytics trackPageViews />
+          {/* Toast Container for notifications */}
+          <ToastContainer
+            position="bottom-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+            toastClassName="!bg-slate-800 !text-slate-100 !rounded-lg !shadow-xl"
+            progressClassName="!bg-blue-500"
+            bodyClassName="!text-sm !font-medium"
+            />
           <Component {...pageProps} />
         </Layout>
       </Provider>

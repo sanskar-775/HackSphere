@@ -1,7 +1,31 @@
 import Earth from "./Earth";
 import Link from "next/link";
+import { toast } from "react-toastify";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function Hero() {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  const handleEventsClick = (e) => {
+    if (!session) {
+      e.preventDefault();
+      toast.error('Please login to view events!', {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        style: {
+          borderLeft: '3px solid #ef4444' // Red-500
+        },
+      });
+      // Redirect after toast
+      setTimeout(() => router.push('/'), 2000);
+    }
+  };
+
   return (
     <div className="hero-container flex flex-col md:flex-row items-center justify-between p-8 bg-black text-white">
       <div className="hero-text flex flex-col items-center relative">
@@ -12,7 +36,15 @@ export default function Hero() {
           HackSphere
         </h1>
         <p className="text-lg mt-2 p-8">Bringing Global Hackathons to One Place.</p>
-        <Link href="/events" className="btn-outline mt-4 rounded">Explore Events</Link>
+        <Link 
+          href="/events" 
+          onClick={handleEventsClick}
+          className={`btn-outline mt-4 rounded ${
+            !session ? 'cursor-not-allowed' : ''
+          }`}
+        >
+          Explore Events
+        </Link>
       </div>
       
       {/* Earth Animation */}
