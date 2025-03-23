@@ -2,6 +2,7 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+
 function NavProfileLinks() {
   const { data: session } = useSession();
   const router = useRouter();
