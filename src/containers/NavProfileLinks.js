@@ -1,21 +1,27 @@
-import { useSession, signIn, signOut } from 'next-auth/react'; // Import NextAuth.js hooks
+import { useSession, signIn, signOut } from 'next-auth/react';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+
 
 function NavProfileLinks() {
-  const { data: session } = useSession(); // Get the session
+  const { data: session } = useSession();
+  const router = useRouter();
 
   const handleSignIn = () => {
-    signIn('google'); // Trigger Google OAuth sign-in
+    signIn('google');
   };
 
   const handleSignOut = () => {
-    signOut(); // Trigger sign-out
+    signOut({ callbackUrl: '/' }); // Directly specify the redirect URL
   };
 
   return (
     <div>
-      {session ? ( // If the user is authenticated
+      {session ? (
         <div className="flex items-center gap-2">
-          <img
+          <Image
+            width={32}
+            height={32}
             src={session.user.image}
             alt={session.user.name}
             className="w-8 h-8 rounded-full"
@@ -28,7 +34,7 @@ function NavProfileLinks() {
             Sign Out
           </button>
         </div>
-      ) : ( // If the user is not authenticated
+      ) : (
         <button
           className="btn btn-sm text-xs normal-case hover:bg-primary btn-outline"
           onClick={handleSignIn}

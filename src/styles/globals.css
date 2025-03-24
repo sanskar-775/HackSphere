@@ -160,3 +160,21 @@ html {
     animation: wave-fade 2.5s ease-in-out infinite;
     transform-origin: left center;
   }
+
+  /* Custom Toastify dark theme */
+.Toastify__toast-icon {
+  color: rgb(59 130 246) !important; /* Blue-500 */
+}
+
+.Toastify__close-button {
+  color: rgb(148 163 184) !important; /* Slate-400 */
+}
+
+.Toastify__close-button:hover {
+  color: rgb(203 213 225) !important; /* Slate-300 */
+}
+
+/* Error toast specific styling */
+.Toastify__toast--error {
+  border-left: 3px solid rgb(239 68 68); /* Red-500 */
+}
