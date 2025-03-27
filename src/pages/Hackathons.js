@@ -52,8 +52,6 @@ const Hackathons = () => {
             try {
                 const hackclubData = await fetchHackathons("/api/hackathons/MLH");
                 const unstopData = await fetchHackathons("/api/hackathons/unstop");
-
-                // 🏆 Merge Both Data Sources
                 setHackathons([...hackclubData, ...unstopData]);
             } catch (error) {
                 console.error("Error fetching hackathon data:", error);

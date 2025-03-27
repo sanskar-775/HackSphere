@@ -27,6 +27,7 @@
     "url": "https://github.com/srobbin01/daisyui-nextjs-landing-page/issues"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@heroicons/react": "^2.0.15",
     "@next/font": "13.1.6",
     "@reduxjs/toolkit": "^1.9.7",
@@ -41,6 +42,7 @@
     "lucide-react": "^0.477.0",
     "mixpanel-browser": "^2.48.1",
     "mongoose": "^8.12.1",
+    "motion": "^12.6.2",
     "next": "^14.0.3",
     "next-auth": "^4.24.11",
     "nextjs-google-analytics": "^2.3.3",

@@ -200,3 +200,41 @@ html {
     margin-left: 1rem;
   }
 }
+@keyframes rainbow-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.avatar-animated-border {
+  position: relative;
+  padding: 2px;
+  border-radius: 50%;
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  background-size: 400% 400%;
+  animation: rainbow-border 3s linear infinite;
+}
+
+.avatar-animated-wrapper {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff; /* Match your theme's background color */
+}
+
+.avatar-animated-image {
+  position: relative;
+  z-index: 1;
+  border-radius: 50%;
+}
