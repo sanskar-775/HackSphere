@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+    <div className="min-h-screen bg-gradient-to-b  text-white" data-theme="black">
       <div className="max-w-6xl mx-auto px-4 py-16">
         {/* Hero Section */}
         <div className="text-center mb-16">
@@ -70,7 +70,19 @@ export default function AboutPage() {
 
         {/* CTA */}
         <div className="text-center border-t border-slate-700 pt-16">
-          <p className="text-xl mb-8">Follow our progress and star the repository to stay updated!</p>
+          <p className="text-xl mb-8">
+            <label className="swap swap-flip text-4xl text-ellipsis align-middle text-center">
+            <input type="checkbox" />
+            <div className="swap-on">😈</div>
+            <div className="swap-off">😇</div>
+            </label>
+            Follow our progress and star the repository to stay updated!
+            <label className="swap swap-flip text-4xl text-ellipsis align-middle text-center">
+            <input type="checkbox" />
+            <div className="swap-on">😈</div>
+            <div className="swap-off">😇</div>
+            </label>
+          </p>
           <Link href="https://github.com/sanskar-775/HackSphere" target='_blank' className="btn btn-outline px-8 py-3 rounded-lg font-semibold transition-colors">
             View on GitHub
           </Link>

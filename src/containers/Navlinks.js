@@ -24,11 +24,27 @@ toast.error('Please login to view events!', {
     }
   };
 
+  const handleHostClick = (e) => {
+    if (!session) {
+      e.preventDefault();
+      // In your handleEventsClick function
+toast.error('Please login to Host an event!', {
+    position: "bottom-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    style: {
+      borderLeft: '3px solid #ef4444' // Red-500
+    },
+  });
+    }
+  };
   return (
     <>
       <li className="mr-2"><Link 
           href="/Host" 
-          onClick={handleEventsClick}
+          onClick={handleHostClick}
           className={!session ? 'cursor-not-allowed' : ''}
         >
           Host

@@ -2,8 +2,8 @@ import Link from "next/link";
 
 function Footer() {
     return (
-        <div>
-            <div className="bg-gray-900 flex justify-center text-white">
+        <div data-theme="black">
+            <div className=" flex justify-center text-white">
                 <footer className="footer pt-10 pb-24 px-4 max-w-6xl text-base-content">
                     <div>
                         <p className="font-bold text-2xl text-blue-400">HackSphere 🚀</p>
@@ -42,7 +42,7 @@ function Footer() {
                     </div>
                 </footer>
             </div>
-            <div className="p-4 flex justify-center bg-gray-800">
+            <div className="p-4 flex justify-center">
                 <div className="max-w-5xl text-gray-400">
                     <p>© {new Date().getFullYear()} HackSphere. All rights reserved.</p>
                 </div>

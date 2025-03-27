@@ -26,7 +26,7 @@ export default function Layout({ children }) {
 
   return (
     <>
-    <div data-theme="night">
+    <div data-theme="black">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:image" content="/cover-pic.png" />
